@@ -3,10 +3,6 @@
  * and open the template in the editor. 
  */
 
-/**
- *
- * @author rd
- */
 public class Mutare {
     public int i1,j1,i2,j2,eval;
     public Mutare(){

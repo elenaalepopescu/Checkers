@@ -1,6 +1,0 @@
-projectKey=Dame
-serverUrl=http://localhost:9000
-serverVersion=6.4.0.25310
-dashboardUrl=http://localhost:9000/dashboard/index/Dame
-ceTaskId=AV0xQ5qFDxxdIw6sMhBN
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AV0xQ5qFDxxdIw6sMhBN

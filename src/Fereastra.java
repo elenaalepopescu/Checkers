@@ -3,10 +3,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.*;
 
-/**
- *
- * @author rd
- */
 public class Fereastra extends JFrame implements WindowListener{
 
     public Fereastra(String t){

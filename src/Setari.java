@@ -12,10 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author rd
- */
 public class Setari implements ActionListener {
 
     public Fereastra fr = new Fereastra("Setari");
@@ -23,23 +19,24 @@ public class Setari implements ActionListener {
     Exit cancelbtn = new Exit("CANCEL");
     JTextField nume;
     CheckboxGroup cbg1, cbg2;
-    Checkbox rosu, negru, usor, mediu, avansat;
+    Checkbox alb, negru, usor, mediu, avansat;
     
     public Setari() {
         JLabel a, b, c, d;
         JPanel p1, p2, p3, p4, p5, p6, p7;
-        
-        d = new JLabel("SETARI JOC", JLabel.CENTER);
-        d.setFont(new Font("Arial", Font.BOLD, 21));
+
+        String FontText = "Arial";
+        d = new JLabel("Setarile jocului", JLabel.CENTER);
+        d.setFont(new Font(FontText, Font.BOLD, 21));
         a = new JLabel("Numele dumneavoastra", JLabel.CENTER);
-        a.setFont(new Font("Arial", Font.BOLD, 14));
+        a.setFont(new Font(FontText, Font.BOLD, 14));
         b = new JLabel("Alegeti culoarea pieselor", JLabel.CENTER);
-        b.setFont(new Font("Arial", Font.BOLD, 14));
+        b.setFont(new Font(FontText, Font.BOLD, 14));
         c = new JLabel("Alegeti dificultatea jocului", JLabel.CENTER);
-        c.setFont(new Font("Arial", Font.BOLD, 14));
-        nume = new JTextField("Nume", 10);
+        c.setFont(new Font(FontText, Font.BOLD, 14));
+        nume = new JTextField("", 10);
         cbg1 = new CheckboxGroup();
-        rosu = new Checkbox("Rosu", cbg1, false);
+        alb = new Checkbox("Alb", cbg1, false);
         negru = new Checkbox("Negru", cbg1, false);
         cbg2 = new CheckboxGroup();
         usor = new Checkbox("Usor", cbg2, false);
@@ -53,7 +50,7 @@ public class Setari implements ActionListener {
         p3 = new JPanel();
         p3.add(b);
         p4 = new JPanel();
-        p4.add(rosu, BorderLayout.WEST);
+        p4.add(alb, BorderLayout.WEST);
         p4.add(negru, BorderLayout.EAST);
         p5 = new JPanel();
         p5.add(c);
@@ -89,7 +86,7 @@ public class Setari implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int op = 1;
         if (e.getSource() == startbtn) {
-            if (rosu.getState() == false && negru.getState() == false) {
+            if (alb.getState() == false && negru.getState() == false) {
                 op = 0;
                 JOptionPane.showMessageDialog(fr, "Alegeti culoarea pieselor");
                 
@@ -102,12 +99,7 @@ public class Setari implements ActionListener {
             if (op == 1) {
                 fr.setVisible(false);
                 Tabla obt = new Tabla();
-                //   obt.muta_n_computer(6, 1, 4, 3);
-                //   obt.muta_n_computer(7, 2, 5, 4);
-                //   obt.muta_n_computer(8, 1, 5, 8);
-                // ob.muta_a(3,4,4,5);
-                //    ob.muta_a(2,5,4,7);
-                //  ob.muta_a(1,6,5,6);
+
             }
             
         }
