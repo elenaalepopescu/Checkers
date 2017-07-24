@@ -17,10 +17,10 @@ public class Tabla implements ActionListener {
     public ImageIcon piesaNegru = new ImageIcon("black.png");
     public ImageIcon regeRosu = new ImageIcon("whiteKing.png");
     public ImageIcon regeNegru = new ImageIcon("blackKing.png");
-    public int nr = 0, regi_a = 0, regi_n = 0, piese_a = 0, piese_n = 0;  //scor_nume=0,scor_computer=0,egal=0;
+    public int nr = 0, regi_a = 0, regi_n = 0, piese_a = 0, piese_n = 0, egal=0;
     public boolean rand = true, max = true;
     public Fereastra fereastraPrincipala = new Fereastra("Tabla de joc");
-    JLabel nume, computer, punctaj, piese, regi, punctajn, punctajc, piesen, piesec, regin, regic, vid, cine_muta;
+    JLabel nume, computer, piese, regi, piesen, piesec, regin, regic, vid, cine_muta;
     JPanel p1 = new JPanel();
     public static Setari ex;
     Mutare x = new Mutare();
@@ -28,7 +28,7 @@ public class Tabla implements ActionListener {
     Mutare Mm = new Mutare();
 
     public Tabla() {
-        fereastraPrincipala.setSize(700, 900);
+        fereastraPrincipala.setSize(700, 780);
         p.setLayout(new GridLayout(8, 8));
         fereastraPrincipala.setLocationRelativeTo(null);
         for (i = 1; i <= 8; i++)
@@ -79,16 +79,10 @@ public class Tabla implements ActionListener {
         nume.setFont(new Font(FondText, Font.BOLD, 14));
         computer = new JLabel("Computer", JLabel.CENTER);
         computer.setFont(new Font(FondText, Font.BOLD, 14));
-        //punctaj = new JLabel("Scor",JLabel.CENTER);
-        //punctaj.setFont(new Font(FondText,Font.BOLD,14));
         piese = new JLabel("Numar piese", JLabel.CENTER);
         piese.setFont(new Font(FondText, Font.BOLD, 14));
         regi = new JLabel("Numar regi", JLabel.CENTER);
         regi.setFont(new Font(FondText, Font.BOLD, 14));
-        //punctajn = new JLabel("0",JLabel.CENTER);
-        //punctajn.setFont(new Font(FondText,Font.BOLD,14));
-        //punctajc = new JLabel("0",JLabel.CENTER);
-        //punctajc.setFont(new Font(FondText,Font.BOLD,14));
         piesen = new JLabel("8", JLabel.CENTER);
         piesen.setFont(new Font(FondText, Font.BOLD, 14));
         piesec = new JLabel("8", JLabel.CENTER);
@@ -113,9 +107,6 @@ public class Tabla implements ActionListener {
         p1.add(vid);
         p1.add(nume);
         p1.add(computer);
-        //p1.add(punctaj);
-        //p1.add(punctajn);
-        //p1.add(punctajc);
         p1.add(piese);
         p1.add(piesen);
         p1.add(piesec);
@@ -251,7 +242,6 @@ public class Tabla implements ActionListener {
 
     public void muta_a_nume(int i1, int j1, int k1, int l1) {
         int ci, cj, ct, sw = 1, ind = 0;
-        //int pct_a=0,pct_n=0;
         regi_a = 0;
         regi_n = 0;
         piese_a = 0;
@@ -278,23 +268,17 @@ public class Tabla implements ActionListener {
                 if (A[ci][cj].rege == true && A[ci][cj].culoare == 1)
                     regi_n++;
             }
-        //pct_a = piese_a * 10 + regi_a * 17;
-        //pct_n = piese_n * 10 + regi_n * 17;
         if (ex.alb.getState()) {
             piesen.setText(Integer.toString(piese_a));
             piesec.setText(Integer.toString(piese_n));
             regin.setText(Integer.toString(regi_a));
             regic.setText(Integer.toString(regi_n));
-            // punctajn.setText(Integer.toString(pct_a));
-            //punctajc.setText(Integer.toString(pct_n));
         }
         if (ex.negru.getState()) {
             piesen.setText(Integer.toString(piese_n));
             piesec.setText(Integer.toString(piese_a));
             regin.setText(Integer.toString(regi_n));
             regic.setText(Integer.toString(regi_a));
-            //punctajn.setText(Integer.toString(pct_n));
-            //punctajc.setText(Integer.toString(pct_a));
         }
 
         for (ci = 1; ci <= 8; ci++)
@@ -362,23 +346,17 @@ public class Tabla implements ActionListener {
                 if (A[ci][cj].rege == true && A[ci][cj].culoare == 1)
                     regi_n++;
             }
-        //pct_a = piese_a * 10 + regi_a * 17;
-        //pct_n = piese_n * 10 + regi_n * 17;
         if (ex.alb.getState()) {
             piesen.setText(Integer.toString(piese_a));
             piesec.setText(Integer.toString(piese_n));
             regin.setText(Integer.toString(regi_a));
             regic.setText(Integer.toString(regi_n));
-            //  punctajn.setText(Integer.toString(pct_a));
-            //punctajc.setText(Integer.toString(pct_n));
         }
         if (ex.negru.getState()) {
             piesen.setText(Integer.toString(piese_n));
             piesec.setText(Integer.toString(piese_a));
             regin.setText(Integer.toString(regi_n));
             regic.setText(Integer.toString(regi_a));
-            //punctajn.setText(Integer.toString(pct_n));
-            //punctajc.setText(Integer.toString(pct_a));
         }
         for (ci = 1; ci <= 8; ci++)
             for (cj = 1; cj <= 8; cj++) {
@@ -386,7 +364,6 @@ public class Tabla implements ActionListener {
                 A1[ci][cj].piesa = A[ci][cj].piesa;
                 A1[ci][cj].culoare = A[ci][cj].culoare;
                 A1[ci][cj].rege = A[ci][cj].rege;
-                // System.out.println(A1[ci][cj].culoare+" "+A1[ci][cj].piesa);
             }
         for (ci = 1; ci <= 8; ci++)
             for (cj = 1; cj <= 8; cj++) {
@@ -418,7 +395,6 @@ public class Tabla implements ActionListener {
 
     public void muta_n_computer(int i1, int j1, int k1, int l1) {
         int ci, cj;
-        //int pct_a=0,pct_n=0;
         regi_a = 0;
         regi_n = 0;
         piese_a = 0;
@@ -453,23 +429,17 @@ public class Tabla implements ActionListener {
                 if (A[ci][cj].rege == true && A[ci][cj].culoare == 1)
                     regi_n++;
             }
-        //pct_a = piese_a * 10 + regi_a * 17;
-        //pct_n = piese_n * 10 + regi_n * 17;
         if (ex.alb.getState()) {
             piesen.setText(Integer.toString(piese_a));
             piesec.setText(Integer.toString(piese_n));
             regin.setText(Integer.toString(regi_a));
             regic.setText(Integer.toString(regi_n));
-            //  punctajn.setText(Integer.toString(pct_a));
-            //punctajc.setText(Integer.toString(pct_n));
         }
         if (ex.negru.getState()) {
             piesen.setText(Integer.toString(piese_n));
             piesec.setText(Integer.toString(piese_a));
             regin.setText(Integer.toString(regi_n));
             regic.setText(Integer.toString(regi_a));
-            //punctajn.setText(Integer.toString(pct_n));
-            //punctajc.setText(Integer.toString(pct_a));
         }
         for (ci = 1; ci <= 8; ci++)
             for (cj = 1; cj <= 8; cj++) {
@@ -489,7 +459,6 @@ public class Tabla implements ActionListener {
 
     public void muta_a_computer(int i1, int j1, int k1, int l1) {
         int ci, cj;
-        //int pct_a=0,pct_n=0;
         regi_a = 0;
         regi_n = 0;
         piese_a = 0;
@@ -524,24 +493,18 @@ public class Tabla implements ActionListener {
                 if (A[ci][cj].rege == true && A[ci][cj].culoare == 1)
                     regi_n++;
             }
-        //pct_a = piese_a * 10 + regi_a * 17;
-        //pct_n = piese_n * 10 + regi_n * 17;
 
         if (ex.alb.getState()) {
             piesen.setText(Integer.toString(piese_a));
             piesec.setText(Integer.toString(piese_n));
             regin.setText(Integer.toString(regi_a));
             regic.setText(Integer.toString(regi_n));
-            //   punctajn.setText(Integer.toString(pct_a));
-            // punctajc.setText(Integer.toString(pct_n));
         }
         if (ex.negru.getState()) {
             piesen.setText(Integer.toString(piese_n));
             piesec.setText(Integer.toString(piese_a));
             regin.setText(Integer.toString(regi_n));
             regic.setText(Integer.toString(regi_a));
-            //punctajn.setText(Integer.toString(pct_n));
-            //    punctajc.setText(Integer.toString(pct_a));
         }
         for (ci = 1; ci <= 8; ci++)
             for (cj = 1; cj <= 8; cj++) {
@@ -800,7 +763,7 @@ public class Tabla implements ActionListener {
         Mutare[] x1 = new Mutare[96];
         int t1 = 0, mx = 0, ci, cj, id;
 
-        if (ex.rosu.getState()) {
+        if (ex.alb.getState()) {
             for (ci = 1; ci <= 8; ci++)
                 for (cj = 1; cj <= 8; cj++) {
                     if ((A1[ci][cj].culoare == 1) && (A1[ci][cj].piesa == true)) {
@@ -1124,7 +1087,7 @@ public class Tabla implements ActionListener {
         if (ad > 0) {
             if (max == true) {//computerul este la mutare
                 max = false;
-                if (ex.rosu.getState()) {  //computerul joaca cu piesele negre
+                if (ex.alb.getState()) {  //computerul joaca cu piesele negre
                     toate_mutarile_n(P);
                     for (ccc = 1; ccc <= cnt; ccc++) {
                         r++;
@@ -1230,7 +1193,7 @@ public class Tabla implements ActionListener {
                 }
             } else {
                 max = true;
-                if (ex.rosu.getState()) {  //nume joaca cu piesele albe
+                if (ex.alb.getState()) {  //nume joaca cu piesele albe
                     toate_mutarile_a(P);
                     for (ccc = 1; ccc <= cnt; ccc++) {
                         r++;
@@ -1338,7 +1301,7 @@ public class Tabla implements ActionListener {
             }
         }
         if (ad == 0) {
-            if (ex.rosu.getState()) {  //com joaca cu piesele negre
+            if (ex.alb.getState()) {  //com joaca cu piesele negre
                 id = 1;
                 m1[id] = new Mutare();
                 m1[id].eval = evaluare1(P, 1);
@@ -1367,7 +1330,7 @@ public class Tabla implements ActionListener {
         nmrn = nr_piese_negre();
         nmra = nr_piese_albe();
         if (ex.usor.getState()) {
-            if (ex.rosu.getState()) {
+            if (ex.alb.getState()) {
                 if (nmrn == 0) {
                     JOptionPane.showMessageDialog(fereastraPrincipala, ex.nume.getText() + " a castigat");
                     for (ci = 1; ci <= 8; ci++)
@@ -1459,7 +1422,7 @@ public class Tabla implements ActionListener {
             }
         }
         if (ex.mediu.getState()) {
-            if (ex.rosu.getState()) {
+            if (ex.alb.getState()) {
                 if (nmrn == 0) {
                     JOptionPane.showMessageDialog(fereastraPrincipala, ex.nume.getText() + " a castigat");
                     for (ci = 1; ci <= 8; ci++)
@@ -1554,7 +1517,7 @@ public class Tabla implements ActionListener {
         }
 
         if (ex.avansat.getState()) {
-            if (ex.rosu.getState()) {
+            if (ex.alb.getState()) {
                 if (nmrn == 0) {
                     JOptionPane.showMessageDialog(fereastraPrincipala, ex.nume.getText() + " a castigat");
                     for (ci = 1; ci <= 8; ci++)
@@ -1664,7 +1627,7 @@ public class Tabla implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (rand == true) {
 
-            if (ex.rosu.getState()) {
+            if (ex.alb.getState()) {
                 for (i = 1; i <= 8; i++)
                     for (j = 1; j <= 8; j++) {
                         if ((a[i][j] == e.getSource()) && (nr % 2 != 0)) {
